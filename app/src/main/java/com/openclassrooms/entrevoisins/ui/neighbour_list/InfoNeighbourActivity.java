@@ -72,6 +72,8 @@ public class InfoNeighbourActivity extends AppCompatActivity {
             tvPhone.setText(neighbour.getPhoneNumber());
             tvWebLink.setText(String.format("www.facebook.fr/%s", neighbour.getName().toLowerCase(Locale.ROOT)));
 
+            fab.setOnClickListener(view -> neighbour.setFavorite(!neighbour.isFavorite()));
+
             tvAboutMe.setText(neighbour.getAboutMe());
         }
     }
