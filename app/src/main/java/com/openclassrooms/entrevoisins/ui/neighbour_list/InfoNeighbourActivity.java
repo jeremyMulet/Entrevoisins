@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.DummyNeighbourApiService;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
@@ -52,7 +53,7 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_neighbour);
         ButterKnife.bind(this);
 
-        mApiService = new DummyNeighbourApiService();
+        mApiService = DI.getNeighbourApiService();
 
         // retrieve neighbour using id in param
         neighbour = mApiService.getNeighbourById(getIntent().getLongExtra(NEIGHBOUR_ID, 0));
