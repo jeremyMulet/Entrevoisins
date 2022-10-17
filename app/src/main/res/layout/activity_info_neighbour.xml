@@ -16,6 +16,14 @@
         tools:srcCompat="@tools:sample/avatars"
         android:contentDescription="@string/neighbour_s_picture" />
 
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </Button>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardInfo"
         android:layout_width="match_parent"
