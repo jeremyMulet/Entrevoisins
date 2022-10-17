@@ -16,23 +16,23 @@
         tools:srcCompat="@tools:sample/avatars"
         android:contentDescription="@string/neighbour_s_picture" />
 
-    <Button
+    <ImageView
         android:id="@+id/btn_back"
+        android:src="@drawable/ic_arrow_back_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:contentDescription="@string/back_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </Button>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -44,45 +44,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp">
 
             <!-- Title, secondary and supporting text -->
             <TextView
                 android:id="@+id/cardInfoTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Caroline"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="24sp"
+                tools:text="Caroline" />
 
             <TextView
                 android:id="@+id/tvAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="Saint Pierre du mont à 5km"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                android:drawableStart="@drawable/ic_delete_white_24dp"/>
+                style="@style/info_tv"
+                android:drawableStart="@drawable/ic_place_24"
+                tools:text="Saint Pierre du mont à 5km" />
 
             <TextView
                 android:id="@+id/tvPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                tools:text="+33 6 45 87 98 09"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                android:drawableStart="@drawable/ic_delete_white_24dp"/>
+                style="@style/info_tv"
+                android:drawableStart="@drawable/ic_phone_24"
+                tools:text="+33 6 45 87 98 09" />
 
             <TextView
                 android:id="@+id/tvWebLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                tools:text="www.facebook.fr/caroline"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                android:drawableStart="@drawable/ic_delete_white_24dp"/>
+                style="@style/info_tv"
+                android:drawableStart="@drawable/ic_baseline_language_24"
+                tools:text="www.facebook.fr/caroline" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -90,7 +82,9 @@
         android:id="@+id/cardAboutMe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +102,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about_me"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textSize="24sp" />
+
 
             <TextView
                 android:id="@+id/tvAboutMe"
@@ -134,5 +130,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/ic_star_white_24dp" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        tools:text="Caroline" />
 
 </android.support.constraint.ConstraintLayout>
