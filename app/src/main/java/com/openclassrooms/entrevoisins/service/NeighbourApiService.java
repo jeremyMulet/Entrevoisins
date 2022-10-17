@@ -17,6 +17,12 @@ public interface NeighbourApiService {
     List<Neighbour> getNeighbours();
 
     /**
+     * Get specific neighbour using his id
+     * @param neighbourId
+     * @return {@link Neighbour}
+     */
+    Neighbour getNeighbourById(long neighbourId);
+    /**
      * Deletes a neighbour
      * @param neighbour
      */

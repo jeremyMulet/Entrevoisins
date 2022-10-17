@@ -24,6 +24,19 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
      * {@inheritDoc}
      */
     @Override
+    public Neighbour getNeighbourById(long neighbourId) {
+        for (Neighbour neighbour : neighbours) {
+            if (neighbour.getId() == neighbourId) {
+                return neighbour;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public void deleteNeighbour(Neighbour neighbour) {
         neighbours.remove(neighbour);
     }
