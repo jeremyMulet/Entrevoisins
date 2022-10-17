@@ -1,21 +1,20 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Intent;
-import android.os.TestLooperManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.DummyNeighbourApiService;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
-
+import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -23,9 +22,11 @@ public class InfoNeighbourActivity extends AppCompatActivity {
 
     // UI components
     @BindView(R.id.imageView)
-    ImageView imageView;
+    ImageView avatar;
     @BindView(R.id.btn_back)
-    Button btnBack;
+    ImageButton btnBack;
+    @BindView(R.id.tvName)
+    TextView tvName;
     @BindView(R.id.cardInfoTitle)
     TextView tvInfoTitle;
     @BindView(R.id.tvAddress)
@@ -34,8 +35,6 @@ public class InfoNeighbourActivity extends AppCompatActivity {
     TextView tvPhone;
     @BindView(R.id.tvWebLink)
     TextView tvWebLink;
-    @BindView(R.id.aboutTitle)
-    TextView aboutTitle;
     @BindView(R.id.tvAboutMe)
     TextView tvAboutMe;
     @BindView(R.id.floatingActionButton)
@@ -59,8 +58,20 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         neighbour = mApiService.getNeighbourById(getIntent().getLongExtra(NEIGHBOUR_ID, 0));
 
         if (neighbour != null) {
-            String s = neighbour.getAddress();
-            tvAddress.setText(s);
+
+            btnBack.setOnClickListener(view -> onBackPressed());
+            Glide.with(avatar.getContext())
+                    .load(neighbour.getAvatarUrl())
+                    .into(avatar);
+
+            tvName.setText(neighbour.getName());
+            tvInfoTitle.setText(neighbour.getName());
+
+            tvAddress.setText(neighbour.getAddress());
+            tvPhone.setText(neighbour.getPhoneNumber());
+            tvWebLink.setText(String.format("www.facebook.fr/%s", neighbour.getName().toLowerCase(Locale.ROOT)));
+
+            tvAboutMe.setText(neighbour.getAboutMe());
         }
     }
 
