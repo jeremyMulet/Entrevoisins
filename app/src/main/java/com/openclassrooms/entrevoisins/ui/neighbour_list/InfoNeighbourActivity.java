@@ -1,6 +1,9 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -13,7 +16,6 @@ import com.bumptech.glide.Glide;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.service.DummyNeighbourApiService;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import java.util.Locale;
 import butterknife.BindView;
@@ -72,9 +74,13 @@ public class InfoNeighbourActivity extends AppCompatActivity {
             tvPhone.setText(neighbour.getPhoneNumber());
             tvWebLink.setText(String.format("www.facebook.fr/%s", neighbour.getName().toLowerCase(Locale.ROOT)));
 
-            fab.setOnClickListener(view -> neighbour.setFavorite(!neighbour.isFavorite()));
+            fab.setOnClickListener(view -> {
+                neighbour.setFavorite(!neighbour.isFavorite());
+                setFabColor();
+            });
 
             tvAboutMe.setText(neighbour.getAboutMe());
+            setFabColor();
         }
     }
 
@@ -82,5 +88,13 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         Intent intent = new Intent(activity, InfoNeighbourActivity.class);
         intent.putExtra("neighbourId", neighbourId);
         ActivityCompat.startActivity(activity, intent, null);
+    }
+
+    private void setFabColor() {
+        if(neighbour.isFavorite()) {
+            fab.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.favorite)));
+        } else {
+            fab.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+        }
     }
 }
