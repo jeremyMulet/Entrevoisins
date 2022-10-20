@@ -55,6 +55,10 @@ public class InfoNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_neighbour);
         ButterKnife.bind(this);
 
+        // Remove title activity action bar
+        if (getSupportActionBar() != null)
+            getSupportActionBar().hide();
+
         mApiService = DI.getNeighbourApiService();
 
         // retrieve neighbour using id in param
